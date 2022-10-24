@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+include requirements.txt
+recursive-include ckanext/vip_portal *.html *.json *.js *.less *.css *.mo *.yml
+recursive-include ckanext/vip_portal/migration *.ini *.py *.mako

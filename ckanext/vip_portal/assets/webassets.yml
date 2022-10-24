@@ -1,0 +1,14 @@
+# vip_portal-js:
+#   filter: rjsmin
+#   output: ckanext-vip_portal/%(version)s-vip_portal.js
+#   contents:
+#     - js/vip_portal.js
+#   extra:
+#     preload:
+#       - base/main
+
+# vip_portal-css:
+#   filter: cssrewrite
+#   output: ckanext-vip_portal/%(version)s-vip_portal.css
+#   contents:
+#     - css/vip_portal.css
