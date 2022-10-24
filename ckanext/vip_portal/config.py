@@ -69,7 +69,7 @@ def free_authenticated_access() -> bool:
     )
 
 def allowed_endpoints() -> list[tuple[str, Any]]:
-    endpoints = essential_endpoints.copy()
+    endpoints: list[tuple[str, Any]] = essential_endpoints.copy()
 
     if tk.asbool(tk.config.get(CONFIG_ALLOW_LOGIN, DEFAULT_ALLOW_LOGIN)):
         endpoints += login_endpoints
@@ -84,7 +84,7 @@ def allowed_endpoints() -> list[tuple[str, Any]]:
         endpoints += api_endpoints
 
     for ep in tk.aslist(tk.config.get(CONFIG_EXTRA_ALLOWED_ENDPOINTS)):
-        endpoints.append(ep.split("."))
+        endpoints.append(tuple(ep.split(".")))
 
     return endpoints
 
