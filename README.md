@@ -1,4 +1,4 @@
-[![Tests](https://github.com/DataShades/ckanext-vip-portal/workflows/Tests/badge.svg?branch=main)](https://github.com/DataShades/ckanext-vip-portal/actions)
+[![Tests](https://github.com/DataShades/ckanext-vip-portal/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/DataShades/ckanext-vip-portal/actions/workflows/test.yml)
 
 # ckanext-vip-portal
 
@@ -19,7 +19,7 @@ Compatibility with core CKAN versions:
 
 ## Installation
 
-To install ckanext-vip-portal:
+To install `ckanext-vip-portal`:
 
 2. Install it using pip
    ```sh
@@ -79,7 +79,7 @@ ckanext.vip_portal.extra_allowed_suffixes = .svg .html .css
 
 ## Developer installation
 
-To install ckanext-vip-portal for development, activate your CKAN virtualenv and
+To install `ckanext-vip-portal` for development, activate your CKAN virtualenv and
 do:
 
     git clone https://github.com/DataShades/ckanext-vip-portal.git
