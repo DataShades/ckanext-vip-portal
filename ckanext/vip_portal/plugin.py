@@ -22,7 +22,11 @@ class VipPortalPlugin(p.SingletonPlugin):
         if config.free_anonymous_access():
             return
 
-        identify()
+        # try default identifier if no extensions have identified user up until
+        # now
+        if not getattr(tk.g, "user", None):
+            identify()
+
         if config.free_authenticated_access() and getattr(tk.g, "user", None):
             return
 
