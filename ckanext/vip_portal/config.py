@@ -54,7 +54,7 @@ register_endpoints = [
 ]
 
 api_endpoints = [
-    ("api", "action"),
+    ("api", ANY),
 ]
 
 
