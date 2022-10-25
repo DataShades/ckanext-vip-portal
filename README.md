@@ -33,6 +33,10 @@ To install `ckanext-vip-portal`:
 ## Config settings
 
 ```ini
+# Configure endpoint that handles unauthorized page access
+# (optional, default: user.login).
+ckanext.vip_portal.login_endpoint = auth_ext.login
+
 # Allow anonymous access to all the pages. It basically disables
 # current extensions
 # (optional, default: false).
@@ -59,7 +63,7 @@ ckanext.vip_portal.allow_registration = false
 ckanext.vip_portal.allow_api = false
 
 # Additional endpoints that are accessible by anonymous user
-# (optional, default: empty).p
+# (optional, default: empty).
 ckanext.vip_portal.extra_allowed_endpoints = home.index home.about dataset.search
 
 # Additional paths(URLs) that are accessible by anonymous user
