@@ -45,7 +45,7 @@ class VipPortalPlugin(p.SingletonPlugin):
             if resp:
                 break
         else:
-            resp = tk.h.redirect_to("user.login")
+            resp = tk.h.redirect_to(config.login_endpoint())
 
         resp.headers.update(
             {

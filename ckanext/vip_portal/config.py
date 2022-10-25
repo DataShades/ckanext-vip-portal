@@ -6,6 +6,9 @@ from unittest.mock import ANY
 
 import ckan.plugins.toolkit as tk
 
+CONFIG_LOGIN_ENDPOINT = "ckanext.vip_portal.login_endpoint"
+DEFAULT_LOGIN_ENDPOINT = "user.login"
+
 CONFIG_FREE_ANON = "ckanext.vip_portal.free_anonymous_access"
 DEFAULT_FREE_ANON = False
 
@@ -107,3 +110,7 @@ def allowed_suffixes() -> Iterable[str]:
     suffixes = []
     suffixes += tk.aslist(tk.config.get(CONFIG_EXTRA_ALLOWED_SUFFIXES))
     return suffixes
+
+
+def login_endpoint() -> str:
+    return tk.config.get(CONFIG_LOGIN_ENDPOINT, DEFAULT_LOGIN_ENDPOINT)
