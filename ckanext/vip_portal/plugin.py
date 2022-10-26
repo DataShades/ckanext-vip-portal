@@ -42,7 +42,7 @@ class VipPortalPlugin(p.SingletonPlugin):
         log.debug("Unauthorized page accessed(%s): %s", endpoint, path)
 
         for plugin in p.PluginImplementations(interfaces.IVipPortal):
-            resp = plugin.make_vip_rejection_response()
+            resp = plugin.make_vip_rejection_response(user)
             if resp:
                 break
         else:

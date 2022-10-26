@@ -42,7 +42,7 @@ class IVipPortal(Interface):
 
         return Access.unknown
 
-    def make_vip_rejection_response(self) -> Optional[Response]:
+    def make_vip_rejection_response(self, user: Optional[str]) -> Optional[Response]:
         return None
 
     def alter_vip_rejection_response(self, resp: Response) -> Response:
