@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Optional
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -32,11 +33,11 @@ class VipPortalPlugin(p.SingletonPlugin):
             return
 
         endpoint = tk.get_endpoint()
-        if utils.is_free_endpoint(endpoint):
+        if utils.is_free_endpoint(endpoint, user):
             return
 
         path = tk.request.path
-        if utils.is_free_path(path):
+        if utils.is_free_path(path, user):
             return
 
         log.debug("Unauthorized page accessed(%s): %s", endpoint, path)
@@ -65,14 +66,14 @@ class VipPortalPlugin(p.SingletonPlugin):
         return resp
 
     # IVipPortal
-    def check_vip_access_for_endpoint(self, endpoint: tuple[str, str]) -> interfaces.Access:
+    def check_vip_access_for_endpoint(self, endpoint: tuple[str, str], user: Optional[str]) -> interfaces.Access:
         for ep in config.allowed_endpoints():
             if ep == endpoint:
                 return interfaces.Access.allowed
 
-        return super().check_vip_access_for_endpoint(endpoint)
+        return super().check_vip_access_for_endpoint(endpoint, user)
 
-    def check_vip_access_for_path(self, path: str) -> interfaces.Access:
+    def check_vip_access_for_path(self, path: str, user: Optional[str]) -> interfaces.Access:
         allowed = config.allowed_paths()
 
         if path in allowed:
@@ -88,4 +89,4 @@ class VipPortalPlugin(p.SingletonPlugin):
             if path.endswith(suffix):
                 return interfaces.Access.allowed
 
-        return super().check_vip_access_for_path(path)
+        return super().check_vip_access_for_path(path, user)
