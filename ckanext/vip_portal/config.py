@@ -36,7 +36,7 @@ essential_endpoints = [
     ("webassets", ANY),
     ("static", ANY),
     ("_debug_toolbar", ANY),
-    ("dashboard", "index"),
+    # ("dashboard", "index"),
 ]
 
 login_endpoints = [
