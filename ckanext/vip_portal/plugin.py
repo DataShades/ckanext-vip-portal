@@ -63,3 +63,29 @@ class VipPortalPlugin(p.SingletonPlugin):
             resp = plugin.alter_vip_rejection_response(resp)
 
         return resp
+
+    # IVipPortal
+    def check_vip_access_for_endpoint(self, endpoint: tuple[str, str]) -> interfaces.Access:
+        for ep in config.allowed_endpoints():
+            if ep == endpoint:
+                return interfaces.Access.allowed
+
+        return super().check_vip_access_for_endpoint(endpoint)
+
+    def check_vip_access_for_path(self, path: str) -> interfaces.Access:
+        allowed = config.allowed_paths()
+
+        if path in allowed:
+            return interfaces.Access.allowed
+
+        prefixes = config.allowed_prefixes()
+        for prefix in prefixes:
+            if path.startswith(prefix):
+                return interfaces.Access.allowed
+
+        suffixes = config.allowed_suffixes()
+        for suffix in suffixes:
+            if path.endswith(suffix):
+                return interfaces.Access.allowed
+
+        return super().check_vip_access_for_path(path)
