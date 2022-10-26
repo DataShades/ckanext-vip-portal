@@ -17,6 +17,7 @@ class IVipPortal(Interface):
     def check_vip_access_for_endpoint(
         self, endpoint: tuple[str, str]
     ) -> Access:
+
         for ep in config.allowed_endpoints():
             if ep == endpoint:
                 return Access.allowed

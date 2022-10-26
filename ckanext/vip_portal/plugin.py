@@ -27,7 +27,8 @@ class VipPortalPlugin(p.SingletonPlugin):
         if not getattr(tk.g, "user", None):
             identify()
 
-        if config.free_authenticated_access() and getattr(tk.g, "user", None):
+        user = getattr(tk.g, "user", None)
+        if config.free_authenticated_access() and user:
             return
 
         endpoint = tk.get_endpoint()
@@ -45,7 +46,10 @@ class VipPortalPlugin(p.SingletonPlugin):
             if resp:
                 break
         else:
-            resp = tk.h.redirect_to(config.login_endpoint())
+            if user:
+                resp = tk.abort(403, tk._("Not authorized to view this page"))
+            else:
+                resp = tk.h.redirect_to(config.login_endpoint())
 
         resp.headers.update(
             {
