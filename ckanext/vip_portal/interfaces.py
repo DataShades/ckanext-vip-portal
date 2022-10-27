@@ -24,5 +24,5 @@ class IVipPortal(Interface):
     def make_vip_rejection_response(self, user: Optional[str]) -> Optional[Response]:
         return None
 
-    def alter_vip_rejection_response(self, resp: Response) -> Response:
+    def alter_vip_rejection_response(self, resp: Response, user: Optional[str]) -> Response:
         return resp

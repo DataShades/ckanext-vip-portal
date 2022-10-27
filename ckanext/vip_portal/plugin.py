@@ -33,6 +33,10 @@ class VipPortalPlugin(p.SingletonPlugin):
             return
 
         endpoint = tk.get_endpoint()
+        if endpoint == (None, None):
+            # page does not exist / method not allowed / etc.
+            return
+
         if utils.is_free_endpoint(endpoint, user):
             return
 
@@ -61,7 +65,7 @@ class VipPortalPlugin(p.SingletonPlugin):
         )
 
         for plugin in p.PluginImplementations(interfaces.IVipPortal):
-            resp = plugin.alter_vip_rejection_response(resp)
+            resp = plugin.alter_vip_rejection_response(resp, user)
 
         return resp
 
