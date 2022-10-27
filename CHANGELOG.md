@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/DataShades/ckanext-vip-portal/compare/v0.0.5...v0.0.6) (2022-10-27)
+
+
+### Features
+
+* 403 response for authenticated user ([9402754](https://github.com/DataShades/ckanext-vip-portal/commit/9402754977fcc085286ca7b07015b0e5d1e20f87))
+
+
+### Bug Fixes
+
+* handle missing endpoints ([4af50e6](https://github.com/DataShades/ckanext-vip-portal/commit/4af50e626c8177ce60d86f00482cbe5c3e79f3f7))
+* remove dashboard from default allowed routes ([c6ef41b](https://github.com/DataShades/ckanext-vip-portal/commit/c6ef41b2008b03c2c1b979f23696c38d9b8992fb))
+
 ### [0.0.5](https://github.com/DataShades/ckanext-vip-portal/compare/v0.0.4...v0.0.5) (2022-10-25)
 
 
