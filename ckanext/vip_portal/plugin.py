@@ -23,6 +23,20 @@ class VipPortalPlugin(p.SingletonPlugin):
         if config.free_anonymous_access():
             return
 
+        authenticators = p.PluginImplementations(p.IAuthenticator)
+        if authenticators:
+            for item in authenticators:
+                if item is self:
+                    continue
+                response = item.identify()
+                if response:
+                    return response
+                try:
+                    if tk.g.user:
+                        break
+                except AttributeError:
+                    continue
+
         # try default identifier if no extensions have identified user up until
         # now
         if not getattr(tk.g, "user", None):
