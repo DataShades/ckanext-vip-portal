@@ -28,9 +28,8 @@ class VipPortalPlugin(p.SingletonPlugin):
             for item in authenticators:
                 if item is self:
                     continue
-                response = item.identify()
-                if response:
-                    return response
+                if item.identify():
+                    break
                 try:
                     if tk.g.user:
                         break
