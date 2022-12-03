@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/DataShades/ckanext-vip-portal/compare/v0.1.0...v0.1.1) (2022-12-03)
+
+
+### Bug Fixes
+
+* do not fail with other authenticators ([1026a42](https://github.com/DataShades/ckanext-vip-portal/commit/1026a429a1cad506133056a62c7ecc67f5b2f13c))
+
 ## [0.1.0](https://github.com/DataShades/ckanext-vip-portal/compare/v0.0.6...v0.1.0) (2022-11-29)
 
 
