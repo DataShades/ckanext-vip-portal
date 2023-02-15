@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/DataShades/ckanext-vip-portal/compare/v0.1.1...v0.1.2) (2023-02-15)
+
+
+### Features
+
+* add ckanext.vip_portal.free_access_by_default config option ([1eb9b40](https://github.com/DataShades/ckanext-vip-portal/commit/1eb9b40d8f1a1d48dcbca2dddc9e1bdb34f8ebb8))
+
 ### [0.1.1](https://github.com/DataShades/ckanext-vip-portal/compare/v0.1.0...v0.1.1) (2022-12-03)
 
 
