@@ -15,6 +15,9 @@ DEFAULT_FREE_ANON = False
 CONFIG_FREE_USER = "ckanext.vip_portal.free_authenticated_access"
 DEFAULT_FREE_USER = True
 
+CONFIG_FREE_UNDEFINED = "ckanext.vip_portal.free_access_by_default"
+DEFAULT_FREE_UNDEFINED = False
+
 CONFIG_ALLOW_LOGIN = "ckanext.vip_portal.allow_login"
 DEFAULT_ALLOW_LOGIN = True
 
@@ -70,6 +73,13 @@ def free_authenticated_access() -> bool:
     return tk.asbool(
         tk.config.get(CONFIG_FREE_USER, DEFAULT_FREE_USER)
     )
+
+
+def free_access_by_default() -> bool:
+    return tk.asbool(
+        tk.config.get(CONFIG_FREE_UNDEFINED, DEFAULT_FREE_UNDEFINED)
+    )
+
 
 def allowed_endpoints() -> list[tuple[str, Any]]:
     endpoints: list[tuple[str, Any]] = essential_endpoints.copy()

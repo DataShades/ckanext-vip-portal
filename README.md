@@ -46,6 +46,13 @@ ckanext.vip_portal.free_anonymous_access = true
 # (optional, default: true).
 ckanext.vip_portal.free_authenticated_access = false
 
+# Unless endpoint is blocked by one of IVipAccess implementations,
+# it can be accessed by anyone. Use it in combination with IVipAccess
+# interface if you want to leave the portal generally open and
+# block only certain endpoints
+# (optional, default: false).
+ckanext.vip_portal.free_access_by_default = true
+
 # Allow anonymous access to login pages
 # (optional, default: true).
 ckanext.vip_portal.allow_login = false

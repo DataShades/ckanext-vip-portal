@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import enum
-from typing import Optional
+from typing import Optional, Union
 from flask import Response
 from ckan.plugins import Interface
 
@@ -14,7 +14,7 @@ class Access(enum.Enum):
 
 class IVipPortal(Interface):
     def check_vip_access_for_endpoint(
-            self, endpoint: tuple[str, str], user: Optional[str]
+            self, endpoint: Union[tuple[str, str], tuple[None, None]], user: Optional[str]
     ) -> Access:
         return Access.unknown
 
