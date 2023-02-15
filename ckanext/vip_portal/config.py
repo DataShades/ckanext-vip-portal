@@ -65,14 +65,11 @@ api_endpoints = [
 
 
 def free_anonymous_access() -> bool:
-    return tk.asbool(
-        tk.config.get(CONFIG_FREE_ANON, DEFAULT_FREE_ANON)
-    )
+    return tk.asbool(tk.config.get(CONFIG_FREE_ANON, DEFAULT_FREE_ANON))
+
 
 def free_authenticated_access() -> bool:
-    return tk.asbool(
-        tk.config.get(CONFIG_FREE_USER, DEFAULT_FREE_USER)
-    )
+    return tk.asbool(tk.config.get(CONFIG_FREE_USER, DEFAULT_FREE_USER))
 
 
 def free_access_by_default() -> bool:

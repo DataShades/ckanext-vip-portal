@@ -7,7 +7,9 @@ from ckan.plugins import PluginImplementations
 from . import config, interfaces
 
 
-def is_free_endpoint(endpoint: Union[tuple[str, str], tuple[None, None]], user: Optional[str]) -> bool:
+def is_free_endpoint(
+    endpoint: Union[tuple[str, str], tuple[None, None]], user: Optional[str]
+) -> bool:
     for p in PluginImplementations(interfaces.IVipPortal):
         access = p.check_vip_access_for_endpoint(endpoint, user)
 

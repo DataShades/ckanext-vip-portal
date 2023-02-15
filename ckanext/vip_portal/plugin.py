@@ -83,14 +83,18 @@ class VipPortalPlugin(p.SingletonPlugin):
         return resp
 
     # IVipPortal
-    def check_vip_access_for_endpoint(self, endpoint: tuple[str, str], user: Optional[str]) -> interfaces.Access:
+    def check_vip_access_for_endpoint(
+        self, endpoint: tuple[str, str], user: Optional[str]
+    ) -> interfaces.Access:
         for ep in config.allowed_endpoints():
             if ep == endpoint:
                 return interfaces.Access.allowed
 
         return super().check_vip_access_for_endpoint(endpoint, user)
 
-    def check_vip_access_for_path(self, path: str, user: Optional[str]) -> interfaces.Access:
+    def check_vip_access_for_path(
+        self, path: str, user: Optional[str]
+    ) -> interfaces.Access:
         allowed = config.allowed_paths()
 
         if path in allowed:

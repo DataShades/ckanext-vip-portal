@@ -14,15 +14,23 @@ class Access(enum.Enum):
 
 class IVipPortal(Interface):
     def check_vip_access_for_endpoint(
-            self, endpoint: Union[tuple[str, str], tuple[None, None]], user: Optional[str]
+        self,
+        endpoint: Union[tuple[str, str], tuple[None, None]],
+        user: Optional[str],
     ) -> Access:
         return Access.unknown
 
-    def check_vip_access_for_path(self, path: str, user: Optional[str]) -> Access:
+    def check_vip_access_for_path(
+        self, path: str, user: Optional[str]
+    ) -> Access:
         return Access.unknown
 
-    def make_vip_rejection_response(self, user: Optional[str]) -> Optional[Response]:
+    def make_vip_rejection_response(
+        self, user: Optional[str]
+    ) -> Optional[Response]:
         return None
 
-    def alter_vip_rejection_response(self, resp: Response, user: Optional[str]) -> Response:
+    def alter_vip_rejection_response(
+        self, resp: Response, user: Optional[str]
+    ) -> Response:
         return resp
