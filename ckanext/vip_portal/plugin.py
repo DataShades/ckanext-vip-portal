@@ -18,30 +18,35 @@ class VipPortalPlugin(p.SingletonPlugin):
 
     # IAuthenticator
     def identify(self):
-        from ckan.views import _identify_user_default as identify
-
         if config.free_anonymous_access():
             return
 
-        authenticators = p.PluginImplementations(p.IAuthenticator)
-        if authenticators:
-            for item in authenticators:
-                if item is self:
-                    continue
-                if item.identify():
-                    break
-                try:
-                    if tk.g.user:
+        if tk.check_ckan_version("2.10"):
+            user = "" if tk.current_user.is_anonymous else tk.current_user.name
+        else:
+            from ckan.views import _identify_user_default as identify
+
+
+            authenticators = p.PluginImplementations(p.IAuthenticator)
+            if authenticators:
+                for item in authenticators:
+                    if item is self:
+                        continue
+                    if item.identify():
                         break
-                except AttributeError:
-                    continue
+                    try:
+                        if tk.g.user:
+                            break
+                    except AttributeError:
+                        continue
 
-        # try default identifier if no extensions have identified user up until
-        # now
-        if not getattr(tk.g, "user", None):
-            identify()
+            # try default identifier if no extensions have identified user up until
+            # now
+            if not getattr(tk.g, "user", None):
+                identify()
 
-        user = getattr(tk.g, "user", None)
+            user = getattr(tk.g, "user", None)
+
         if config.free_authenticated_access() and user:
             return
 
