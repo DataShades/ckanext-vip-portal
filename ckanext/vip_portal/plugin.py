@@ -8,10 +8,17 @@ import ckan.plugins.toolkit as tk
 
 from . import config, utils, interfaces
 
+try:
+    config_declarations = tk.blanket.config_declarations
+except AttributeError:
+    def config_declarations(cls):
+        return cls
+
 
 log = logging.getLogger(__name__)
 
 
+@config_declarations
 class VipPortalPlugin(p.SingletonPlugin):
     p.implements(p.IAuthenticator, inherit=True)
     p.implements(interfaces.IVipPortal, inherit=True)
