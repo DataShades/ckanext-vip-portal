@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/DataShades/ckanext-vip-portal/compare/v0.1.2...v0.2.0) (2023-03-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* CKAN v2.10 support
+
+### Features
+
+* CKAN v2.10 support ([818cb40](https://github.com/DataShades/ckanext-vip-portal/commit/818cb40a9146de44d015ee403d72f9967ba75b21))
+
 ### [0.1.2](https://github.com/DataShades/ckanext-vip-portal/compare/v0.1.1...v0.1.2) (2023-02-15)
 
 
