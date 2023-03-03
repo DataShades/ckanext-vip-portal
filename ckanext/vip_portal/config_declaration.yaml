@@ -1,0 +1,65 @@
+version: 1
+groups:
+  - annotation: ckanext-vip-portal
+    options:
+
+    - key: ckanext.vip_portal.login_endpoint
+      default: user.login
+      example: auth_ext.login
+      description: Configure endpoint that handles unauthorized page access
+
+    - key: ckanext.vip_portal.free_anonymous_access
+      default: false
+      example: "true"
+      description: Allow anonymous access to all the pages. It basically disables current extensions
+
+    - key: ckanext.vip_portal.free_authenticated_access
+      default: true
+      example: "false"
+      description: Allow any authenticated user to visit pages normally
+
+    - key: ckanext.vip_portal.free_access_by_default
+      default: false
+      example: "true"
+      description: |
+         Unless endpoint is blocked by one of IVipAccess implementations, it
+         can be accessed by anyone. Use it in combination with IVipAccess
+         interface if you want to leave the portal generally open and block
+         only certain endpoints
+
+
+    - key: ckanext.vip_portal.allow_login
+      default: true
+      example: "false"
+      description: Allow anonymous access to login pages
+
+    - key: ckanext.vip_portal.allow_password_reset
+      default: true
+      example: "false"
+      description: Allow anonymous access to password reset page
+
+    - key: ckanext.vip_portal.allow_registration
+      default: true
+      example: "false"
+      description: Allow anonymous access to registration pages
+
+    - key: ckanext.vip_portal.allow_api
+      default: true
+      example: "false"
+      description: Allow anonymous access to API endpoints
+
+    - key: ckanext.vip_portal.extra_allowed_endpoints
+      example: home.index home.about dataset.search
+      description: Additional endpoints that are accessible by anonymous user
+
+    - key: ckanext.vip_portal.extra_allowed_paths
+      example: / /about /dataset
+      description: Additional paths(URLs) that are accessible by anonymous user
+
+    - key: ckanext.vip_portal.extra_allowed_prefixes
+      example: /dataset /organization /group /static
+      description: Allow anonymous user to access any path that starts with the following prefixes
+
+    - key: ckanext.vip_portal.extra_allowed_suffixes
+      example: .svg .html .css
+      description: Allow anonymous user to access any path that ends with the following suffixes
