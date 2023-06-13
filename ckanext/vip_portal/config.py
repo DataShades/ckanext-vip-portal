@@ -53,6 +53,7 @@ login_endpoints = [
 
 password_reset_endpoints = [
     ("user", "request_reset"),
+    ("user", "perform_reset"),
 ]
 
 register_endpoints = [
