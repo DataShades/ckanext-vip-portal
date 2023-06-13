@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/DataShades/ckanext-vip-portal/compare/v0.2.1...v0.2.2) (2023-06-13)
+
+
+### Bug Fixes
+
+* add perform_reset to password reset endpoints ([85560ef](https://github.com/DataShades/ckanext-vip-portal/commit/85560ef09731b0356ef01c8a0c9b588e84618adb))
+
 ### [0.2.1](https://github.com/DataShades/ckanext-vip-portal/compare/v0.2.0...v0.2.1) (2023-03-03)
 
 
