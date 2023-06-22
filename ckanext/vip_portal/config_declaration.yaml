@@ -22,8 +22,8 @@ groups:
       default: false
       example: "true"
       description: |
-         Unless endpoint is blocked by one of IVipAccess implementations, it
-         can be accessed by anyone. Use it in combination with IVipAccess
+         Unless endpoint is blocked by one of IVipPortal implementations, it
+         can be accessed by anyone. Use it in combination with IVipPortal
          interface if you want to leave the portal generally open and block
          only certain endpoints
 

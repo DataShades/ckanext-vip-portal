@@ -14,7 +14,8 @@ Compatibility with core CKAN versions:
 | CKAN version | Compatible? |
 |--------------|-------------|
 | 2.9          | yes         |
-| 2.10         | not yet     |
+| 2.10         | yes         |
+| 2.11(master) | yes         |
 
 
 ## Installation
@@ -47,7 +48,7 @@ ckanext.vip_portal.free_anonymous_access = true
 ckanext.vip_portal.free_authenticated_access = false
 
 # Unless endpoint is blocked by one of IVipAccess implementations, it can be
-# accessed by anyone. Use it in combination with IVipAccess interface if you
+# accessed by anyone. Use it in combination with IVipPortal interface if you
 # want to leave the portal generally open and block only certain endpoints
 # (optional, default: false)
 ckanext.vip_portal.free_access_by_default = true
