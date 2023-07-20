@@ -87,6 +87,12 @@ ckanext.vip_portal.extra_allowed_prefixes = /dataset /organization /group /stati
 # (optional, default: )
 ckanext.vip_portal.extra_allowed_suffixes = .svg .html .css
 
+# Allows to customize the route that the user will get redirected to
+# after a successful login. Empty value allow user to be redirected to the page 
+# requested before displaying login page
+# (optional, default: )
+ckan.auth.route_after_login = dataset.search
+
 ```
 
 
