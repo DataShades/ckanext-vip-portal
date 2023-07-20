@@ -5,6 +5,7 @@ from typing import Optional
 
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
+import ckan.lib.helpers as h
 
 from . import config, utils, interfaces
 
@@ -79,7 +80,13 @@ class VipPortalPlugin(p.SingletonPlugin):
             if user:
                 resp = tk.abort(403, tk._("Not authorized to view this page"))
             else:
-                resp = tk.h.redirect_to(config.login_endpoint())
+                came_from = None
+                if tk.config.get("ckan.auth.route_after_login"):
+                    came_from = h.url_for(tk.config.get("ckan.auth.route_after_login"))
+                resp = tk.h.redirect_to(
+                    config.login_endpoint(),
+                    came_from=came_from or tk.request.path
+                )
 
         resp.headers.update(
             {
