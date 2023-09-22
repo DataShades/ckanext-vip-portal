@@ -43,7 +43,6 @@ essential_endpoints = [
 ]
 
 login_endpoints = [
-    ("user", "login"),
     ("user", "logged_in"),
     ("user", "logout"),
     ("user", "logged_out"),
@@ -83,7 +82,8 @@ def allowed_endpoints() -> list[tuple[str, Any]]:
     endpoints: list[tuple[str, Any]] = essential_endpoints.copy()
 
     if tk.asbool(tk.config.get(CONFIG_ALLOW_LOGIN, DEFAULT_ALLOW_LOGIN)):
-        endpoints += login_endpoints
+        configured_login: tuple[str, str] = tuple(login_endpoint().split(".", 1))
+        endpoints += [configured_login] + login_endpoints
 
     if tk.asbool(tk.config.get(CONFIG_ALLOW_RESET, DEFAULT_ALLOW_RESET)):
         endpoints += password_reset_endpoints
@@ -101,7 +101,7 @@ def allowed_endpoints() -> list[tuple[str, Any]]:
 
 
 def allowed_paths() -> Collection[str]:
-    paths = {}
+    paths: set[str] = set()
 
     paths.update(tk.aslist(tk.config.get(CONFIG_EXTRA_ALLOWED_PATHS)))
 
@@ -109,13 +109,13 @@ def allowed_paths() -> Collection[str]:
 
 
 def allowed_prefixes() -> Iterable[str]:
-    prefixes = []
+    prefixes: list[str] = []
     prefixes += tk.aslist(tk.config.get(CONFIG_EXTRA_ALLOWED_PREFIXES))
     return prefixes
 
 
 def allowed_suffixes() -> Iterable[str]:
-    suffixes = []
+    suffixes: list[str] = []
     suffixes += tk.aslist(tk.config.get(CONFIG_EXTRA_ALLOWED_SUFFIXES))
     return suffixes
 
