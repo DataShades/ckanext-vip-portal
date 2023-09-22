@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/DataShades/ckanext-vip-portal/compare/v0.2.3...v0.2.4) (2023-09-22)
+
+
+### Bug Fixes
+
+* include custom login into allowed login endpoints ([6d1d028](https://github.com/DataShades/ckanext-vip-portal/commit/6d1d028df6e29bfd3834e65740a882d392215121))
+
 ### [0.2.3](https://github.com/DataShades/ckanext-vip-portal/compare/v0.2.2...v0.2.3) (2023-07-20)
 
 
