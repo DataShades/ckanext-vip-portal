@@ -11,6 +11,7 @@ from . import config, utils, interfaces
 try:
     config_declarations = tk.blanket.config_declarations
 except AttributeError:
+
     def config_declarations(cls):
         return cls
 
@@ -28,24 +29,38 @@ class VipPortalPlugin(p.SingletonPlugin):
         if config.free_anonymous_access():
             return
 
+        authenticators = p.PluginImplementations(p.IAuthenticator)
         if tk.check_ckan_version("2.10"):
             user = "" if tk.current_user.is_anonymous else tk.current_user.name
-        else:
-            from ckan.views import _identify_user_default as identify
-
-
-            authenticators = p.PluginImplementations(p.IAuthenticator)
-            if authenticators:
+            if not user:
+                # give other authenticators a chance to identify user
                 for item in authenticators:
                     if item is self:
                         continue
-                    if item.identify():
-                        break
+
+                    response = item.identify()
+                    if response:
+                        return response
                     try:
-                        if tk.g.user:
+                        if tk.current_user.is_authenticated:
+                            user = tk.current_user.name
                             break
                     except AttributeError:
                         continue
+
+        else:
+            from ckan.views import _identify_user_default as identify
+
+            for item in authenticators:
+                if item is self:
+                    continue
+                if item.identify():
+                    break
+                try:
+                    if tk.g.user:
+                        break
+                except AttributeError:
+                    continue
 
             # try default identifier if no extensions have identified user up until
             # now
