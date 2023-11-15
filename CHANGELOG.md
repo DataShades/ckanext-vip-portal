@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with latest](https://github.com/DataShades/ckanext-vip-portal/compare/v0.2.4...HEAD)</small>
 
+### Bug Fixes
+
+- CKAN v2.10 custom authenticators are not supported ([0aaf26d](https://github.com/DataShades/ckanext-vip-portal/commit/0aaf26d7ab20d2799c9fe6c452c99ebb6fca9c7b) by Sergey Motornyuk).
+
 <!-- insertion marker -->
 ## [v0.2.4](https://github.com/DataShades/ckanext-vip-portal/releases/tag/v0.2.4) - 2023-09-22
 
