@@ -33,21 +33,20 @@ class VipPortalPlugin(p.SingletonPlugin):
         authenticators = p.PluginImplementations(p.IAuthenticator)
         if tk.check_ckan_version("2.10"):
             user = "" if tk.current_user.is_anonymous else tk.current_user.name
-            if not user:
-                # give other authenticators a chance to identify user
-                for item in authenticators:
-                    if item is self:
-                        continue
+            # give other authenticators a chance to identify user
+            for item in authenticators:
+                if item is self:
+                    continue
 
-                    response = item.identify()
-                    if response:
-                        return response
-                    try:
-                        if tk.current_user.is_authenticated:
-                            user = tk.current_user.name
-                            break
-                    except AttributeError:
-                        continue
+                response = item.identify()
+                if response:
+                    return response
+                try:
+                    if tk.current_user.is_authenticated:
+                        user = tk.current_user.name
+                        break
+                except AttributeError:
+                    continue
 
         else:
             from ckan.views import _identify_user_default as identify
