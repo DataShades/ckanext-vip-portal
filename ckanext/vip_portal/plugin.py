@@ -96,13 +96,14 @@ class VipPortalPlugin(p.SingletonPlugin):
             else:
                 came_from = None
                 if config.resume_after_login():
-                    came_from = tk.request.path
+                    came_from = tk.h.url_for_static(tk.request.path)
 
                 elif tk.config.get("ckan.auth.route_after_login"):
                     came_from = h.url_for(tk.config["ckan.auth.route_after_login"])
 
                 resp = tk.h.redirect_to(
-                    config.login_endpoint(), came_from=came_from or tk.request.path
+                    config.login_endpoint(),
+                    came_from=came_from or tk.h.url_for_static(tk.request.path),
                 )
 
         resp.headers.update(
