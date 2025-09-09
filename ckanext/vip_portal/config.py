@@ -35,6 +35,8 @@ CONFIG_EXTRA_ALLOWED_PATHS = "ckanext.vip_portal.extra_allowed_paths"
 CONFIG_EXTRA_ALLOWED_PREFIXES = "ckanext.vip_portal.extra_allowed_prefixes"
 CONFIG_EXTRA_ALLOWED_SUFFIXES = "ckanext.vip_portal.extra_allowed_suffixes"
 
+CONFIG_RESUME_AFTER_LOGIN = "ckanext.vip_portal.resume_after_login"
+
 essential_endpoints = [
     ("webassets", ANY),
     ("static", ANY),
@@ -73,9 +75,7 @@ def free_authenticated_access() -> bool:
 
 
 def free_access_by_default() -> bool:
-    return tk.asbool(
-        tk.config.get(CONFIG_FREE_UNDEFINED, DEFAULT_FREE_UNDEFINED)
-    )
+    return tk.asbool(tk.config.get(CONFIG_FREE_UNDEFINED, DEFAULT_FREE_UNDEFINED))
 
 
 def allowed_endpoints() -> list[tuple[str, Any]]:
@@ -122,3 +122,7 @@ def allowed_suffixes() -> Iterable[str]:
 
 def login_endpoint() -> str:
     return tk.config.get(CONFIG_LOGIN_ENDPOINT, DEFAULT_LOGIN_ENDPOINT)
+
+
+def resume_after_login() -> bool:
+    return tk.config[CONFIG_RESUME_AFTER_LOGIN]

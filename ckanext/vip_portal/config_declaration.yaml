@@ -63,3 +63,7 @@ groups:
     - key: ckanext.vip_portal.extra_allowed_suffixes
       example: .svg .html .css
       description: Allow anonymous user to access any path that ends with the following suffixes
+
+    - key: ckanext.vip_portal.resume_after_login
+      type: bool
+      description: Redirect user back to the originally requested page after login
